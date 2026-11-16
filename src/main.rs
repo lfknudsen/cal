@@ -16,10 +16,10 @@ fn main() {
 
     // Print headers
     println!("{: ^23}", now.format("%B %Y"));
-    println!("   Mo Tu We Th Fr Sa Su");
+    println!("\x1b[1m\x1b[4m    Mo Tu We Th Fr Sa Su\x1b[0m");
 
     // Print first line
-    print!("{: >2} ", week_number);
+    print!("\x1b[3m\x1b[90m{: >2}\x1b[0m  ", week_number);
     for i in 0..(first_day - 1) {
         print!("\x1b[2m{: >2}\x1b[0m ", prev_month_days - (first_day - 2 - i));
     }
@@ -38,7 +38,7 @@ fn main() {
     let one_week = days(7);
     while next.month() == now.month() {
 
-        print!("{: >2} ", next.iso_week().week());
+        print!("\x1b[3m\x1b[90m{: >2}\x1b[0m  ", next.iso_week().week());
         let num_days_in_month = next.num_days_in_month() as u32;
 
         for i in 1..8 {
